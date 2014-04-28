@@ -1,0 +1,2 @@
+//Prelevic!
+$(document).ready(function(){$(document).mousemove(function(a){pointer=$("<img>").attr({src:"pointer.png"});$(document.body).append(pointer);pointer.css({'position':"absolute",top:a.pageY+2,left:a.pageX+2}).fadeOut(1500)})})

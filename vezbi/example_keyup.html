@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+<script>
+	$(document).ready(function(e) {
+        $('#tt').keyup(function(){
+			$('span').html($(this).val());
+		});
+		$('#en_fmat_plain').keyup(function(){
+			var x = $(this).val(),
+			enkeyword1 = $('#en_keyword1').val(),
+			enkeyword2 = $('#en_keyword2').val();
+			$('#tt').html(x);
+			$.post('magic.php',{
+				method:2,
+				word:x,
+				keyword1:enkeyword1,
+				keyword2:enkeyword2
+			},function (data){
+				$('#en_fmat_ciph').empty().append(data);
+			});
+		});
+    });
+	
+</script>
+</head>
+
+<body>
+<textarea id="tt"></textarea>
+<fieldset>
+    <table>
+    <tr><td><label>Клучен збор:</label></td><td><input type="text" id="en_keyword1" required/></td></tr>
+    <tr><td><label>Клучен збор:</label></td><td><input type="text" id="en_keyword2" required/></td></tr>
+    <tr><td><label for="en_fmat_plain">Текст за кодирање</label></td>
+    <td><label for="en_fmat_ciph">Кодиран текст</label></td></tr>
+    <tr><td><textarea id="en_fmat_plain"></textarea></td>
+    <td><textarea id="en_fmat_ciph"></textarea></td></tr>
+    </table>
+</fieldset>
+<span>lala</span>
+</body>
+</html>
